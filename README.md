@@ -1,12 +1,13 @@
-# GeoJSON Type Editor
+# GeoJSON Blossom
 
-**GeoJSON Type Editor** is a minimalist desktop application built with Python and PyQt5 for visually inspecting and converting property types in GeoJSON files.
+**GeoJSON Blossom** is a minimalist desktop application built with Python and PyQt5 for visually inspecting, converting property types, and extracting routes with naming in GeoJSON files.
 
 ---
 
 ## ✨ Features
 
 - **Load GeoJSON**: Open files with `.geojson` or `.json` extensions.
+- **Route extraction and naming**: Extract routes from GeoJSON features and assign meaningful names.
 - **Spreadsheet‑style view**: Features appear as rows, keys as columns, with icons and background colors distinguishing numbers from strings.
 - **Column selection**: Click a column header to select a property key for conversion.
 - **Type toggling**: Switch all values in the selected column between numeric and string types with one click.
@@ -14,7 +15,10 @@
   - Convertible columns stay highlighted in translucent blue.
   - Non-convertible columns flash translucent red and revert.
   - Clicking a cell outside the selected column flashes that cell red.
-- **Smart save dialog**: Suggested filename defaults to `originalName_string.geojson` or `originalName_number.geojson` based on your last conversion.
+- **Visual log panel**: Displays color-coded messages for actions and errors.
+- **Smart save dialog**: Suggested filename defaults to `routeName_string.geojson` or `routeName_number.geojson` based on your last conversion and extracted route name.
+- **Modern UI**: Redesigned interface with smooth animations and improved usability.
+- **No in-app map**: Map view and style/token fields removed; external browser used for map visualization.
 
 ---
 
@@ -53,20 +57,20 @@
 pip install pyinstaller
 pyinstaller \
   --windowed \
-  --name GeoJSONEditor \
+  --name GeoJSONBlossom \
   geojson_type_editor.py
 ```
 
-- **macOS**: find `GeoJSONEditor.app` in `dist/`.
-- **Windows**: find `GeoJSONEditor.exe` in `dist/GeoJSONEditor/`.
+- **macOS**: find `GeoJSONBlossom.app` in `dist/`.
+- **Windows**: find `GeoJSONBlossom.exe` in `dist/GeoJSONBlossom/`.
 - Copy the `.app` or `.exe` to your Desktop to launch by double‑click.
 
 ### (Optional) Create a DMG on macOS
 
 ```bash
-hdiutil create -volname "GeoJSONEditor" \
-               -srcfolder dist/GeoJSONEditor.app \
-               -ov -format UDZO GeoJSONEditor.dmg
+hdiutil create -volname "GeoJSONBlossom" \
+               -srcfolder dist/GeoJSONBlossom.app \
+               -ov -format UDZO GeoJSONBlossom.dmg
 ```
 
 ---
@@ -92,4 +96,3 @@ Please open an [issue](https://github.com/<your-username>/geojson-type-editor/is
 
 ## 📄 License
 This project is licensed under the [MIT License](LICENSE). 
-

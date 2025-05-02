@@ -1,0 +1,105 @@
+/* qt_style.qss */
+QWidget {
+    font-family: 'Roboto Mono';
+    background-color: #FFFFFF;
+    color: #4F5D75;
+}
+/* Buttons */
+QPushButton {
+    border-radius: 5px;
+    background-color: #919AA8;
+    color: #FFFFFF;
+    font-weight: bold;
+    min-width: 285px;
+    max-width: 285px;
+    min-height: 34px;
+    max-height: 34px;
+    padding: 3px 14px;
+}
+QPushButton:hover:!disabled {
+    /* Removed movement animation */
+    background-color: #7E8AA2;
+}
+QPushButton:pressed {
+    /* Removed movement animation */
+    background-color: #7E8AA2;
+}
+QPushButton:disabled {
+    border-radius: 5px;
+    background-color: rgba(212, 215, 219, 0.5);
+    color: rgba(79, 93, 117, 0.2);
+    border: 1px inset rgba(0, 0, 0, 0.1);
+}
+
+QLineEdit, QTextEdit, QPlainTextEdit, QTableWidget {
+    border-radius: 5px;
+}
+/* Table */
+QTableWidget {
+    gridline-color: #DDDDDD;
+    background-color: #FFFFFF;
+    border: none;
+}
+QHeaderView::section {
+    background-color: #F9F9F9;
+    padding: 4px 8px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #EEEEEE;
+}
+QTableCornerButton::section {
+    background-color: #F9F9F9;
+    border: none;
+}
+/* Item hover (10% opacity) */
+QTableWidget::item:hover {
+    background-color: rgba(79, 93, 117, 0.10);
+    border-radius: 5px;
+}
+
+/* Item selected (30% opacity, gray tint) */
+QTableWidget::item:selected {
+    background-color: rgba(117, 117, 117, 0.1);
+    border-radius: 5px;
+}
+
+/* Override default Qt highlight for table items */
+QTableView::item:selected {
+    background-color: rgba(128, 128, 128, 0.30);
+    border-radius: 5px;
+}
+QTableView::item:selected:active {
+    background-color: rgba(128, 128, 128, 0.30);
+}
+QTableView::item:selected:!active {
+    background-color: rgba(128, 128, 128, 0.10);
+}
+
+/* Header hover (10% opacity) */
+QHeaderView::section:hover {
+    background-color: rgba(79, 93, 117, 0.10);
+    border-radius: 5px;
+}
+
+/* Header pressed (30% opacity) */
+QHeaderView::section:pressed {
+    background-color: rgba(79, 93, 117, 0.30);
+    border-radius: 5px;
+}
+/* Hide scrollbars when not hovered */
+QScrollBar:vertical, QScrollBar:horizontal {
+    background: transparent;
+    width: 0px;
+    height: 0px;
+}
+QScrollBar:vertical:hover, QScrollBar:horizontal:hover {
+    width: 8px;
+    height: 8px;
+}
+QScrollBar::handle {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+QScrollBar::handle:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
