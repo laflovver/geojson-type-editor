@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "incremental": false,
+  "layers": {
+    "layer_name": {
+      "source": "mapbox://tileset-source/mapbox-3dln/layer_name-source",
+      "minzoom": 0,
+      "maxzoom": 14
+    }
+  }
+}

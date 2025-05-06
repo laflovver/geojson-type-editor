@@ -2,15 +2,19 @@ import sys
 import json
 import tempfile
 import folium
-from PyQt5.QtCore import QUrl, Qt
+from PyQt5.QtCore import QUrl, Qt, QSize
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout,
     QHBoxLayout, QGridLayout, QTableWidget, QTableWidgetItem,
     QPushButton, QFileDialog, QInputDialog,
-    QLineEdit, QDialog, QMessageBox, QTextEdit
+    QLineEdit, QDialog, QMessageBox, QTextEdit,
+    QFormLayout, QTabWidget, QSizePolicy, QAbstractScrollArea,
+    QGroupBox, QLabel, QAction
 )
+from PyQt5.QtCore import QSettings
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtGui import QFontDatabase
+from PyQt5.QtGui import QIcon
 import os
 from logic import GeoJSONManager
 
@@ -41,6 +45,9 @@ class GeoJSONEditor(QMainWindow):
         btn_layout.addWidget(self.toggle_btn)
         btn_layout.addWidget(self.extract_btn)
         btn_layout.addWidget(self.save_btn)
+        # MTS Integration button
+        self.mts_btn = QPushButton("MTS Integration")
+        btn_layout.addWidget(self.mts_btn)
         self.view_btn = QPushButton("Show Table")
         self.view_btn.setObjectName("view_btn")
         self.view_btn.setStyleSheet("""
@@ -91,6 +98,8 @@ class GeoJSONEditor(QMainWindow):
         self.extract_btn.clicked.connect(self.on_extract)
         self.save_btn.clicked.connect(self.on_save)
         self.view_btn.clicked.connect(self.on_view_table)
+        # Connect MTS Integration
+        self.mts_btn.clicked.connect(self.on_mts_integration)
 
     def log_message(self, msg, level="info"):
         color = {"info": "#4F5D75", "success": "#4CAF50", "error": "#FF5C61"}.get(level, "#4F5D75")
@@ -254,6 +263,226 @@ class GeoJSONEditor(QMainWindow):
         self.map_view.setVisible(False)
         self.table.setVisible(True)
         self.view_btn.setVisible(False)
+
+    def on_mts_integration(self):
+        # Open MTS Integration dialog
+        dlg = QDialog(self)
+        dlg.setWindowTitle("MTS Integration")
+        dlg.setMinimumSize(800, 700)
+        dlg_layout = QVBoxLayout(dlg)
+
+        settings = QSettings("GeoJSONEditor", "MapboxMTS")
+
+        # MTS Settings form
+        form = QFormLayout()
+        # Ensure input fields expand with dialog
+        form.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
+        # Align form labels and fields to the left
+        form.setLabelAlignment(Qt.AlignLeft)
+        form.setFormAlignment(Qt.AlignLeft)
+        # Tilesets CLI Path – встроенный browse-icon в поле
+        cliEdit = QLineEdit(settings.value("mts/cli_path", ""))
+        cliEdit.setPlaceholderText("Tilesets CLI Path")
+        cliEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        cliEdit.setStyleSheet("border: 1px solid #ccc;")
+        def browse_cli():
+            directory = QFileDialog.getExistingDirectory(self, "Select Tilesets CLI Directory")
+            if directory:
+                cliEdit.setText(directory)
+        # Embed browse icon action inside the QLineEdit
+        cliIcon = QIcon.fromTheme("folder-open") or QIcon("browse_icon.png")
+        cliAction = QAction(cliIcon, "", cliEdit)
+        cliAction.setToolTip("Browse for Tilesets CLI directory")
+        cliEdit.addAction(cliAction, QLineEdit.TrailingPosition)
+        cliAction.triggered.connect(browse_cli)
+        # Also open browse dialog when clicking on the QLineEdit itself
+        original_mouse_press = cliEdit.mousePressEvent
+        def mouse_press_event(event):
+            browse_cli()
+            return original_mouse_press(event)
+        cliEdit.mousePressEvent = mouse_press_event
+        form.addRow("Tilesets CLI", cliEdit)
+        tokenEdit = QLineEdit(settings.value("mts/access_token", ""))
+        tokenEdit.setPlaceholderText("...")
+        tokenEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        tokenEdit.setStyleSheet("background-color: #ffffff; color: #333333; border: 1px solid #ccc;")
+        form.addRow("Mapbox Access Token", tokenEdit)
+        userEdit = QLineEdit(settings.value("mts/username", ""))
+        userEdit.setPlaceholderText("...")
+        userEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        userEdit.setStyleSheet("background-color: #ffffff; color: #333333; border: 1px solid #ccc;")
+        form.addRow("Mapbox Username", userEdit)
+        sourceEdit = QLineEdit(settings.value("mts/source_name", ""))
+        sourceEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sourceEdit.setStyleSheet("background-color: #ffffff; color: #333333; border: 1px solid #ccc;")
+        # sourceEdit.setPlaceholderText(" ... ")
+        # form.addRow("Source Name :", sourceEdit)
+
+        idEdit = QLineEdit()
+        idEdit.setPlaceholderText(" ≤ 64 characters ")
+        idEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        idEdit.setStyleSheet("background-color: #ffffff; color: #333333; border: 1px solid #ccc;")
+        # form.addRow("Identifier :", idEdit)
+
+        nameEdit = QLineEdit()
+        nameEdit.setPlaceholderText(" ≤ 64 characters ")
+        nameEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        nameEdit.setStyleSheet("background-color: #ffffff; color: #333333; border: 1px solid #ccc;")
+        # form.addRow("Tileset Name :", nameEdit)
+
+        # Add the form layout directly
+        dlg_layout.addLayout(form)
+
+        # Save settings helper
+        def save_settings():
+            settings.setValue("mts/cli_path", cliEdit.text())
+            settings.setValue("mts/access_token", tokenEdit.text())
+            settings.setValue("mts/username", userEdit.text())
+            self.manager.configure_mts(
+                cliEdit.text(),
+                tokenEdit.text(),
+                userEdit.text(),
+                logger=self.log_message
+            )
+
+        # Recipe block
+        recipeGroup = QGroupBox("Recipe")
+        recipeLayout = QVBoxLayout(recipeGroup)
+        from PyQt5.QtWidgets import QHeaderView
+        recipeTable = QTableWidget(1, 6)
+        recipeTable.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        recipeTable.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        recipeTable.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        recipeTable.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        recipeTable.setHorizontalHeaderLabels(["source", "minzoom", "maxzoom", "layer_name", "fillzoom", "incremental"])
+        defaults = [
+            f"mapbox://tileset-source/{userEdit.text()}/layer_name-source",
+            "0",    # minzoom
+            "14",   # maxzoom
+            "layer_name",
+            "",     # fillzoom
+            "false" # incremental
+        ]
+        for col, val in enumerate(defaults):
+            recipeTable.setItem(0, col, QTableWidgetItem(val))
+        recipeLayout.addWidget(recipeTable)
+        btns = QHBoxLayout()
+        saveRecBtn = QPushButton("Save Recipe")
+        openRecBtn = QPushButton("Open Recipe")
+        btns.addWidget(saveRecBtn)
+        btns.addWidget(openRecBtn)
+        recipeLayout.addLayout(btns)
+        # Save recipe to file
+        def on_save_recipe():
+            save_settings()
+            path, _ = QFileDialog.getSaveFileName(
+                self, "Save Recipe", "recipe.json", "JSON Files (*.json)"
+            )
+            if not path:
+                return
+            layers = {}
+            for i in range(recipeTable.rowCount()):
+                minzoom = int(recipeTable.item(i, 0).text())
+                maxzoom = int(recipeTable.item(i, 1).text())
+                # Clamp maxzoom to allowed maximum of 14
+                if maxzoom > 14:
+                    maxzoom = 14
+                layer_name = recipeTable.item(i, 2).text()
+                # Read optional fillzoom
+                fillzoom_item = recipeTable.item(i, 3)
+                layer_spec = {
+                    "minzoom": minzoom,
+                    "maxzoom": maxzoom
+                }
+                if fillzoom_item and fillzoom_item.text().strip():
+                    layer_spec["fillzoom"] = int(fillzoom_item.text())
+                layers[layer_name] = layer_spec
+            # Read global incremental flag from table (first row)
+            inc = False
+            inc_item = recipeTable.item(0, 4)
+            if inc_item and inc_item.text().strip().lower() == "true":
+                inc = True
+            # Wrap into a valid MTS recipe specification with version and options
+            recipe_spec = {
+                "version": 1,
+                "incremental": inc,
+                "layers": layers
+            }
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(recipe_spec, f, ensure_ascii=False, indent=2)
+            self.currentRecipePath = path
+            self.log_message(f"Recipe saved to {path}", "success")
+
+        saveRecBtn.clicked.connect(on_save_recipe)
+        openRecBtn.clicked.connect(self.on_open_recipe)
+        dlg_layout.addWidget(recipeGroup)
+
+        # Fields below Recipe block
+        post_form = QFormLayout()
+        post_form.setLabelAlignment(Qt.AlignLeft)
+        post_form.setFormAlignment(Qt.AlignLeft)
+        # Ensure post-recipe fields expand horizontally
+        sourceEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        idEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        nameEdit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        post_form.addRow("Source Name", sourceEdit)
+        post_form.addRow("Identifier", idEdit)
+        post_form.addRow("Tileset Name", nameEdit)
+        dlg_layout.addLayout(post_form)
+
+        # Create & publish
+        createBtn = QPushButton("Deploy Tileset")
+        pubBtn = QPushButton("Publish")
+        createBtn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        pubBtn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        btnsDeploy = QHBoxLayout()
+        btnsDeploy.addWidget(createBtn)
+        btnsDeploy.addWidget(pubBtn)
+        dlg_layout.addLayout(btnsDeploy)
+
+        def on_deploy_tileset():
+            save_settings()
+            tileset_name = sourceEdit.text().strip()
+            if not tileset_name:
+                self.log_message("Tileset source name is required", "error")
+                return
+            try:
+                self.log_message(f"Uploading source: {tileset_name}", "info")
+                upload_result = self.manager.upload_source(tileset_name)
+                self.log_message(f"Upload Source result: {upload_result}", "success")
+            except Exception as e:
+                self.log_message(f"Upload source failed: {e}", "error")
+                return
+            try:
+                self.log_message(f"Creating tileset: {idEdit.text()}", "info")
+                create_result = self.manager.create_tileset(
+                    idEdit.text(),
+                    getattr(self, 'currentRecipePath', ''),
+                    nameEdit.text()
+                )
+                self.log_message(f"Create Tileset result: {create_result}", "success")
+            except Exception as e:
+                self.log_message(f"Create tileset failed: {e}", "error")
+                return
+
+        createBtn.clicked.connect(on_deploy_tileset)
+        pubBtn.clicked.connect(lambda: self.manager.publish_tileset(
+            idEdit.text(), status_callback=self.log_message
+        ))
+
+        # Persist settings when dialog closes
+        dlg.finished.connect(save_settings)
+        dlg.exec_()
+
+    def on_open_recipe(self):
+        """Open a recipe JSON file into the table."""
+        path, _ = QFileDialog.getOpenFileName(self, "Open Recipe", "", "JSON Files (*.json)")
+        if not path:
+            return
+        with open(path, 'r', encoding='utf-8') as f:
+            recipe = json.load(f)
+        # TODO: populate recipeTable from loaded recipe
+        self.log_message(f"Recipe loaded from {path}", "info")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

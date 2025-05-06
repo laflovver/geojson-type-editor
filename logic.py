@@ -1,17 +1,48 @@
-import json
 import os
+import json
+import tempfile
+from mts_integration_module import MapboxTilingService
 
 class GeoJSONManager:
-    def __init__(self):
+    def __init__(self, cli_path=None, access_token=None, username=None, logger=None):
         self.geojson_data = None
         self.file_path = None
         self.route_name = None
+        # Configure Mapbox Tiling Service integration if provided
+        if cli_path and access_token and username:
+            self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+        else:
+            self.mts = None
 
     def load(self, path):
         """Load GeoJSON data from a file."""
         self.file_path = path
         with open(path, encoding='utf-8') as f:
             self.geojson_data = json.load(f)
+            # Convert route-response JSON (with 'routes') into GeoJSON FeatureCollection
+            if isinstance(self.geojson_data, dict) and 'routes' in self.geojson_data:
+                routes = self.geojson_data.get('routes') or []
+                if routes:
+                    route = routes[0]
+                    coords = route.get('geometry', {}).get('coordinates', [])
+                    # Use route properties (distance, duration, etc.) as feature properties
+                    props = {k: v for k, v in route.items() if k not in ('geometry',)}
+                    self.geojson_data = {
+                        "type": "FeatureCollection",
+                        "features": [
+                            {
+                                "type": "Feature",
+                                "geometry": {"type": "LineString", "coordinates": coords},
+                                "properties": props
+                            }
+                        ]
+                    }
+                    # Persist converted GeoJSON to a temp file and update file_path
+                    tmp = tempfile.NamedTemporaryFile(prefix="geojson_conv_", suffix=".geojson", delete=False, mode="w", encoding="utf-8")
+                    json.dump(self.geojson_data, tmp, ensure_ascii=False, indent=2)
+                    tmp.flush()
+                    tmp.close()
+                    self.file_path = tmp.name
 
     def get_features_and_keys(self):
         """Return the list of features and property keys."""
@@ -134,3 +165,31 @@ class GeoJSONManager:
             suffix = self.route_name or "edited"
             return f"{base}_{suffix}.geojson"
         return "edited.geojson"
+
+    def configure_mts(self, cli_path, access_token, username, logger=None):
+        """Configure Mapbox Tiling Service integration."""
+        self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+
+    def upload_source(self, tileset_name):
+        """Upload the current file as a source to Mapbox Tilesets."""
+        if not hasattr(self, 'mts') or self.mts is None:
+            raise ValueError("MTS integration not configured.")
+        return self.mts.upload_source(tileset_name, self.file_path)
+
+    def create_tileset(self, identifier, recipe_path, name):
+        """Create an empty tileset using a recipe file."""
+        if not hasattr(self, 'mts') or self.mts is None:
+            raise ValueError("MTS integration not configured.")
+        return self.mts.create_tileset(identifier, recipe_path, name)
+
+    def publish_tileset(self, identifier, status_callback=None, interval=30):
+        """Publish a tileset and optionally poll for status."""
+        if not hasattr(self, 'mts') or self.mts is None:
+            raise ValueError("MTS integration not configured.")
+        return self.mts.publish_tileset(identifier, status_callback=status_callback, interval=interval)
+
+    def get_tileset_status(self, identifier):
+        """Get current processing status of a tileset."""
+        if not hasattr(self, 'mts') or self.mts is None:
+            raise ValueError("MTS integration not configured.")
+        return self.mts.get_status(identifier)
