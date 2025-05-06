@@ -7,18 +7,24 @@
 ## ✨ Features
 
 - **Load GeoJSON**: Open files with `.geojson` or `.json` extensions.
-- **Route extraction and naming**: Extract routes from GeoJSON features and assign meaningful names.
-- **Spreadsheet‑style view**: Features appear as rows, keys as columns, with icons and background colors distinguishing numbers from strings.
-- **Column selection**: Click a column header to select a property key for conversion.
-- **Type toggling**: Switch all values in the selected column between numeric and string types with one click.
+- **Route extraction and naming**: Extract routes from GeoJSON features and assign meaningful names via a prompt.
+- **Spreadsheet‑style view**: Features appear as rows, keys as columns, with syntax‑highlighted tables.
+- **JSON/Table/Map previews**: Toggle between a formatted table, raw JSON (with syntax highlighting), and a map preview for loaded or extracted GeoJSON.
+- **Mapbox Tilesets (MTS) Integration**:
+  - Configure Tilesets CLI path, Access Token, and Username.
+  - Upload source, define and pin recipes with editable tables or JSON, and auto‑generate recipes.
+  - Create and deploy tilesets, monitor status, and publish—all with structured, color‑coded logs.
+- **Type toggling**: Switch all values in a selected column between numeric and string types with one click.
 - **Visual feedback**:
-  - Convertible columns stay highlighted in translucent blue.
-  - Non-convertible columns flash translucent red and revert.
-  - Clicking a cell outside the selected column flashes that cell red.
-- **Visual log panel**: Displays color-coded messages for actions and errors.
-- **Smart save dialog**: Suggested filename defaults to `routeName_string.geojson` or `routeName_number.geojson` based on your last conversion and extracted route name.
-- **Modern UI**: Redesigned interface with smooth animations and improved usability.
-- **No in-app map**: Map view and style/token fields removed; external browser used for map visualization.
+  - Convertible columns highlight in translucent blue.
+  - Non‑convertible columns flash translucent red and revert.
+  - Cell editors clear old text to avoid artifacts.
+- **Enhanced logging panel**: Structured tree view with Job ID, Stage, Message, and timestamp; filters duplicate statuses and color‑codes by level.
+- **Customizable UI**:
+  - Modern QSS‑based styling with consistent button and field designs.
+  - Drop‑shadow effects on controls and dynamic JSON syntax colors.
+- **Smart save dialog**: Suggested filename defaults to `routeName_string.geojson` or `routeName_number.geojson`.
+- **Packaging**: Support for PyInstaller bundling into standalone apps on macOS and Windows.
 
 ---
 
