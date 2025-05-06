@@ -268,14 +268,48 @@ class GeoJSONEditor(QMainWindow, Ui_MainWindow):
                 self.log_message("Tileset source name is required", "error")
                 return
             try:
-                upload_result = self.manager.upload_source(tileset_name)
+                # Use the current GeoJSON file path for upload
+                geojson_path = getattr(self.manager, 'file_path', None)
+                if not geojson_path:
+                    self.log_message("No GeoJSON loaded to upload", "error")
+                    return
+                upload_result = self.manager.upload_source(tileset_name, geojson_path)
                 self.log_message(f"Upload Source result: {upload_result}", "success")
             except Exception as e:
                 self.log_message(f"Upload source failed: {e}", "error")
                 return
+            # Ensure a recipe file is specified; auto-generate if missing
+            recipe_path = getattr(self, 'currentRecipePath', '')
+            if not recipe_path:
+                import tempfile, json
+                tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".json", mode="w", encoding="utf-8")
+                # Build recipe from recipeTable
+                layers = {}
+                for i in range(recipeTable.rowCount()):
+                    source = recipeTable.item(i, 0).text()
+                    minzoom = int(recipeTable.item(i, 1).text())
+                    maxzoom = int(recipeTable.item(i, 2).text())
+                    layer_name = recipeTable.item(i, 3).text()
+                    fillzoom_item = recipeTable.item(i, 4)
+                    spec = {"source": source, "minzoom": minzoom, "maxzoom": maxzoom}
+                    if fillzoom_item and fillzoom_item.text().strip():
+                        spec["fillzoom"] = int(fillzoom_item.text())
+                    inc = False
+                    inc_item = recipeTable.item(i, 5)
+                    if inc_item and inc_item.text().strip().lower() == "true":
+                        inc = True
+                    spec["incremental"] = inc
+                    layers[layer_name] = spec
+                recipe_spec = {"version": 1, "layers": layers}
+                json.dump(recipe_spec, tmp, ensure_ascii=False, indent=2)
+                tmp.flush()
+                tmp.close()
+                recipe_path = tmp.name
+                self.currentRecipePath = recipe_path
+                self.log_message(f"Auto-generated recipe at {recipe_path}", "info")
             try:
                 create_result = self.manager.create_tileset(
-                    idEdit.text(), getattr(self, 'currentRecipePath', ''), nameEdit.text()
+                    idEdit.text(), recipe_path, nameEdit.text()
                 )
                 self.log_message(f"Create Tileset result: {create_result}", "success")
             except Exception as e:

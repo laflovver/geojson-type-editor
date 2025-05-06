@@ -4,31 +4,45 @@ QWidget {
     background-color: #FFFFFF;
     color: #4F5D75;
 }
-/* Buttons */
+/* Buttons container */
+/* Apply to container widget holding grouped buttons, if using QGroupBox */
+QGroupBox#buttonGroup {
+    border-radius: 5px;
+    background: #4F5D75; /* var(--Slate-100) */
+    margin: 8px;
+    padding: 4px;
+}
+
+/* Individual buttons */
 QPushButton {
-    border-radius: 5px;
-    background-color: #919AA8;
-    color: #FFFFFF;
-    font-weight: bold;
     min-width: 285px;
-    max-width: 285px;
-    min-height: 34px;
-    max-height: 34px;
+    height: 34px;
     padding: 3px 14px;
-}
-QPushButton:hover:enabled {
-    /* Removed movement animation */
-    background-color: #7E8AA2;
-}
-QPushButton:pressed {
-    /* Removed movement animation */
-    background-color: #7E8AA2;
-}
-QPushButton:disabled {
     border-radius: 5px;
-    background-color: rgba(212, 215, 219, 0.5);
-    color: rgba(79, 93, 117, 0.2);
-    border: 1px inset rgba(0, 0, 0, 0.1);
+    background: #919AA8; /* var(--Slate-60) */
+    color: #FFFFFF;
+}
+
+QPushButton:hover:enabled {
+    background: #7E8AA2;
+}
+
+QPushButton:pressed, QPushButton:checked {
+    background: #4F5D75; /* var(--Slate-100) */
+}
+
+QPushButton:disabled {
+    background: rgba(228, 228, 228, 0.20);
+    color: rgba(79, 93, 117, 0.5);
+}
+
+/* Text input fields */
+QLineEdit, QTextEdit, QPlainTextEdit {
+    height: 24px;
+    padding: 3px 14px;
+    border-radius: 5px;
+    background: rgba(145, 154, 168, 0.1);
+    color: #000000;
 }
 
 QLineEdit, QTextEdit, QPlainTextEdit, QTableWidget {
@@ -38,18 +52,14 @@ QLineEdit, QTextEdit, QPlainTextEdit, QTableWidget {
 QTableWidget {
     gridline-color: #DDDDDD;
     background-color: #FFFFFF;
-    border: none;
 }
 QHeaderView::section {
     background-color: #F9F9F9;
     padding: 4px 8px;
     font-size: 14px;
-    border: none;
-    border-bottom: 1px solid #EEEEEE;
 }
 QTableCornerButton::section {
     background-color: #F9F9F9;
-    border: none;
 }
 /* Item hover (10% opacity) */
 QTableWidget::item:hover {
@@ -99,4 +109,15 @@ QScrollBar::handle {
 }
 QScrollBar::handle:hover {
     background: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Make editors in table cells match cell size and style */
+QTableWidget QLineEdit {
+    min-width: 0;
+    height: 100%;           /* fill the cell vertically */
+    margin: 0;              /* no extra margins */
+    padding: 3px 8px;       /* match table cell padding */
+    border-radius: 5px;
+    background: rgba(145, 154, 168, 0.1);
 }
