@@ -1,0 +1,445 @@
+2025-05-08 16:15:41,986 - core.logger - ERROR - Failed to create main window: 'GeoJSONEditor' object has no attribute 'load_btn'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 43, in _setup_connections
+    self.load_btn.clicked.connect(self.handle_load_geojson)
+    ^^^^^^^^^^^^^
+AttributeError: 'GeoJSONEditor' object has no attribute 'load_btn'
+2025-05-08 16:15:41,987 - __main__ - ERROR - Application startup failed: 'GeoJSONEditor' object has no attribute 'load_btn'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 43, in _setup_connections
+    self.load_btn.clicked.connect(self.handle_load_geojson)
+    ^^^^^^^^^^^^^
+AttributeError: 'GeoJSONEditor' object has no attribute 'load_btn'
+2025-05-08 16:15:50,989 - core.logger - ERROR - Failed to create main window: 'GeoJSONEditor' object has no attribute 'load_btn'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 43, in _setup_connections
+    self.load_btn.clicked.connect(self.handle_load_geojson)
+    ^^^^^^^^^^^^^
+AttributeError: 'GeoJSONEditor' object has no attribute 'load_btn'
+2025-05-08 16:15:50,990 - __main__ - ERROR - Application startup failed: 'GeoJSONEditor' object has no attribute 'load_btn'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 43, in _setup_connections
+    self.load_btn.clicked.connect(self.handle_load_geojson)
+    ^^^^^^^^^^^^^
+AttributeError: 'GeoJSONEditor' object has no attribute 'load_btn'
+2025-05-08 16:16:52,987 - core.logger - ERROR - Failed to create main window: 'GeoJSONEditor' object has no attribute 'load_btn'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 43, in _setup_connections
+    self.load_btn.clicked.connect(self.handle_load_geojson)
+    ^^^^^^^^^^^^^
+AttributeError: 'GeoJSONEditor' object has no attribute 'load_btn'
+2025-05-08 16:16:52,988 - __main__ - ERROR - Application startup failed: 'GeoJSONEditor' object has no attribute 'load_btn'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 43, in _setup_connections
+    self.load_btn.clicked.connect(self.handle_load_geojson)
+    ^^^^^^^^^^^^^
+AttributeError: 'GeoJSONEditor' object has no attribute 'load_btn'
+2025-05-08 16:18:11,655 - core.logger - ERROR - Failed to create main window: 'GeoJSONEditor' object has no attribute 'load_btn'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 43, in _setup_connections
+    self.load_btn.clicked.connect(self.handle_load_geojson)
+    ^^^^^^^^^^^^^
+AttributeError: 'GeoJSONEditor' object has no attribute 'load_btn'
+2025-05-08 16:18:11,656 - __main__ - ERROR - Application startup failed: 'GeoJSONEditor' object has no attribute 'load_btn'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 43, in _setup_connections
+    self.load_btn.clicked.connect(self.handle_load_geojson)
+    ^^^^^^^^^^^^^
+AttributeError: 'GeoJSONEditor' object has no attribute 'load_btn'
+2025-05-08 16:19:50,049 - core.logger - ERROR - Failed to initialize GeoJSON manager: 'MapboxTilingService' object has no attribute '_validate_cli'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute '_validate_cli'
+2025-05-08 16:19:50,051 - core.logger - ERROR - Failed to create main window: 'MapboxTilingService' object has no attribute '_validate_cli'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute '_validate_cli'
+2025-05-08 16:19:50,051 - __main__ - ERROR - Application startup failed: 'MapboxTilingService' object has no attribute '_validate_cli'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute '_validate_cli'
+2025-05-08 16:20:01,558 - core.logger - ERROR - Failed to initialize GeoJSON manager: 'MapboxTilingService' object has no attribute '_validate_cli'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute '_validate_cli'
+2025-05-08 16:20:01,558 - core.logger - ERROR - Failed to create main window: 'MapboxTilingService' object has no attribute '_validate_cli'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute '_validate_cli'
+2025-05-08 16:20:01,559 - __main__ - ERROR - Application startup failed: 'MapboxTilingService' object has no attribute '_validate_cli'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute '_validate_cli'
+2025-05-08 16:22:19,690 - core.logger - ERROR - Failed to initialize GeoJSON manager: 'MapboxTilingService' object has no attribute 'cli_binary'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 41, in _validate_cli
+    result = subprocess.run([self.cli_binary, '--version'],
+                             ^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute 'cli_binary'
+2025-05-08 16:22:19,691 - core.logger - ERROR - Failed to create main window: 'MapboxTilingService' object has no attribute 'cli_binary'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 41, in _validate_cli
+    result = subprocess.run([self.cli_binary, '--version'],
+                             ^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute 'cli_binary'
+2025-05-08 16:22:19,692 - __main__ - ERROR - Application startup failed: 'MapboxTilingService' object has no attribute 'cli_binary'
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 21, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 41, in _validate_cli
+    result = subprocess.run([self.cli_binary, '--version'],
+                             ^^^^^^^^^^^^^^^
+AttributeError: 'MapboxTilingService' object has no attribute 'cli_binary'
+2025-05-08 16:23:13,458 - core.logger - ERROR - Failed to initialize GeoJSON manager: Authentication failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'auth'.
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 36, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 60, in _validate_cli
+    raise RuntimeError(f"Authentication failed: {result.stderr}")
+RuntimeError: Authentication failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'auth'.
+
+2025-05-08 16:23:13,459 - core.logger - ERROR - Failed to create main window: Authentication failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'auth'.
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 36, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 60, in _validate_cli
+    raise RuntimeError(f"Authentication failed: {result.stderr}")
+RuntimeError: Authentication failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'auth'.
+
+2025-05-08 16:23:13,460 - __main__ - ERROR - Application startup failed: Authentication failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'auth'.
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 36, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 60, in _validate_cli
+    raise RuntimeError(f"Authentication failed: {result.stderr}")
+RuntimeError: Authentication failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'auth'.
+
+2025-05-08 16:23:45,714 - core.logger - ERROR - Failed to initialize GeoJSON manager: CLI command failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'sources'.
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 36, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 63, in _validate_cli
+    raise RuntimeError(f"CLI command failed: {result.stderr}")
+RuntimeError: CLI command failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'sources'.
+
+2025-05-08 16:23:45,715 - core.logger - ERROR - Failed to create main window: CLI command failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'sources'.
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 36, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 63, in _validate_cli
+    raise RuntimeError(f"CLI command failed: {result.stderr}")
+RuntimeError: CLI command failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'sources'.
+
+2025-05-08 16:23:45,715 - __main__ - ERROR - Application startup failed: CLI command failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'sources'.
+Traceback (most recent call last):
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/main.py", line 32, in main
+    editor = app.create_main_window()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/core/application.py", line 15, in create_main_window
+    return GeoJSONEditor()
+           ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 38, in __init__
+    self._initialize_manager()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/ui/main_window.py", line 65, in _initialize_manager
+    self.manager = GeoJSONManager(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/geojson_manager.py", line 13, in __init__
+    self.mts = MTSController(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_controller.py", line 29, in __init__
+    self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 36, in __init__
+    self._validate_cli()
+  File "/Users/yauhenitabolich/workproject/geojson-type-editor/logic/mts_manager.py", line 63, in _validate_cli
+    raise RuntimeError(f"CLI command failed: {result.stderr}")
+RuntimeError: CLI command failed: Usage: tilesets [OPTIONS] COMMAND [ARGS]...
+Try 'tilesets --help' for help.
+
+Error: No such command 'sources'.
+
+2025-05-08 16:24:41,144 - core.logger - INFO - GeoJSON manager initialized successfully

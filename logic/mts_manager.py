@@ -10,25 +10,52 @@ class MapboxTilingService:
     Integration with Mapbox Tiling Service CLI (tilesets).
     Provides methods to upload sources, create tilesets, publish and poll status.
     """
+
     def __init__(self, cli_path: str, access_token: str, username: str, logger=None):
-        # self.cli_path = cli_path
+        if not os.path.exists(cli_path):
+            raise ValueError(f"CLI path does not exist: {cli_path}")
+        self.cli_path = cli_path
         self.access_token = access_token
         self.username = username
-        # Logger should be a callable that takes a string (e.g., UI log widget append)
         self.logger = logger or print
 
         # Determine CLI binary and working directory
         if os.path.isdir(cli_path):
             # If 'tilesets' binary exists in the directory, use it; otherwise assume 'tilesets' in PATH
             candidate = os.path.join(cli_path, 'tilesets')
-            if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
+            if os.path.exists(candidate):
                 self.cli_binary = candidate
+                self.working_dir = cli_path
             else:
                 self.cli_binary = 'tilesets'
-            self.cli_dir = cli_path
+                self.working_dir = cli_path
         else:
             self.cli_binary = cli_path
-            self.cli_dir = os.path.dirname(cli_path)
+            self.working_dir = os.path.dirname(cli_path)
+
+        self._validate_cli()
+
+    def _validate_cli(self):
+        """Validate that the CLI is properly installed and configured."""
+        try:
+            # Check if CLI is accessible
+            result = subprocess.run([self.cli_binary, '--version'],
+                                  cwd=self.working_dir,
+                                  capture_output=True,
+                                  text=True)
+            if result.returncode != 0:
+                raise RuntimeError(f"CLI validation failed: {result.stderr}")
+            
+            # Check if access token is set
+            if not self.access_token:
+                raise ValueError("Mapbox access token is not set")
+            
+            if self.logger:
+                self.logger(f"CLI validation successful: {result.stdout}")
+        except Exception as e:
+            if self.logger:
+                self.logger(f"CLI validation failed: {e}", "error")
+            raise
 
     def upload_source(self, tileset_name: str, geojson_path: str):
         """

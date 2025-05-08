@@ -1,7 +1,7 @@
 import os
 import json
 import tempfile
-from mts_integration_module import MapboxTilingService
+from logic.mts_controller import MTSController
 
 class GeoJSONManager:
     def __init__(self, cli_path=None, access_token=None, username=None, logger=None):
@@ -10,7 +10,7 @@ class GeoJSONManager:
         self.route_name = None
         # Configure Mapbox Tiling Service integration if provided
         if cli_path and access_token and username:
-            self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
+            self.mts = MTSController(cli_path, access_token, username, logger=logger)
         else:
             self.mts = None
 
@@ -168,28 +168,4 @@ class GeoJSONManager:
 
     def configure_mts(self, cli_path, access_token, username, logger=None):
         """Configure Mapbox Tiling Service integration."""
-        self.mts = MapboxTilingService(cli_path, access_token, username, logger=logger)
-
-    def upload_source(self, tileset_name):
-        """Upload the current file as a source to Mapbox Tilesets."""
-        if not hasattr(self, 'mts') or self.mts is None:
-            raise ValueError("MTS integration not configured.")
-        return self.mts.upload_source(tileset_name, self.file_path)
-
-    def create_tileset(self, identifier, recipe_path, name):
-        """Create an empty tileset using a recipe file."""
-        if not hasattr(self, 'mts') or self.mts is None:
-            raise ValueError("MTS integration not configured.")
-        return self.mts.create_tileset(identifier, recipe_path, name)
-
-    def publish_tileset(self, identifier, status_callback=None, interval=30):
-        """Publish a tileset and optionally poll for status."""
-        if not hasattr(self, 'mts') or self.mts is None:
-            raise ValueError("MTS integration not configured.")
-        return self.mts.publish_tileset(identifier, status_callback=status_callback, interval=interval)
-
-    def get_tileset_status(self, identifier):
-        """Get current processing status of a tileset."""
-        if not hasattr(self, 'mts') or self.mts is None:
-            raise ValueError("MTS integration not configured.")
-        return self.mts.get_status(identifier)
+        self.mts = MTSController(cli_path, access_token, username, logger=logger)

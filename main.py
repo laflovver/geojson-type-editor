@@ -1,26 +1,43 @@
 import sys
 import os
+import logging
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QSettings
-from ui import GeoJSONEditor
+from core.application import Application
+from core.logger import setup_logger
+from core.config import Config
+
+logger = logging.getLogger(__name__)
+
+def main():
+    try:
+        # Initialize application
+        app = Application(sys.argv)
+        app.setFont(QFont('Roboto Mono', 14))
+        
+        # Load configuration
+        config = Config()
+        
+        # Apply global style sheet
+        script_dir = os.path.dirname(os.path.realpath(__file__))
+        qss_path = os.path.join(script_dir, "qt_style.qss")
+        try:
+            with open(qss_path, 'r') as f:
+                app.setStyleSheet(f.read())
+        except Exception as e:
+            logger.warning(f"Failed to load stylesheet: {e}")
+        
+        # Initialize main window
+        editor = app.create_main_window()
+        editor.show()
+        
+        # Start application
+        sys.exit(app.exec_())
+    except Exception as e:
+        logger.error(f"Application startup failed: {e}", exc_info=True)
+        sys.exit(1)
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    app.setFont(QFont('Roboto Mono', 14))
-    # Apply global style sheet from qt_style.qss
-    script_dir = os.path.dirname(os.path.realpath(__file__))
-    qss_path = os.path.join(script_dir, "qt_style.qss")
-    try:
-        with open(qss_path, 'r') as f:
-            app.setStyleSheet(f.read())
-    except Exception:
-        pass
-    # Load stored access token into environment for Tilesets CLI
-    settings = QSettings("GeoJSONEditor", "MapboxMTS")
-    access_token = settings.value("mts/access_token", "")
-    if access_token:
-        os.environ["MAPBOX_ACCESS_TOKEN"] = access_token
-    editor = GeoJSONEditor()
-    editor.show()
-    sys.exit(app.exec_())
+    setup_logger()
+    main()
