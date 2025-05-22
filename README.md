@@ -1,96 +1,125 @@
-# GeoJSON Blossom
+# GeoJSON Editor
 
-**GeoJSON Blossom** is a minimalist desktop application built with Python and PyQt5 for visually inspecting, converting property types, and extracting routes with naming in GeoJSON files.
+**GeoJSON Editor** is a modern desktop application built with Python and PySide6 for working with GeoJSON files. It provides a user-friendly interface for viewing, editing, and managing GeoJSON data with Mapbox Tilesets (MTS) integration.
 
 ---
 
 ## ✨ Features
 
-- **Load GeoJSON**: Open files with `.geojson` or `.json` extensions.
-- **Route extraction and naming**: Extract routes from GeoJSON features and assign meaningful names via a prompt.
-- **Spreadsheet‑style view**: Features appear as rows, keys as columns, with syntax‑highlighted tables.
-- **JSON/Table/Map previews**: Toggle between a formatted table, raw JSON (with syntax highlighting), and a map preview for loaded or extracted GeoJSON.
-- **Mapbox Tilesets (MTS) Integration**:
-  - Configure Tilesets CLI path, Access Token, and Username.
-  - Upload source, define and pin recipes with editable tables or JSON, and auto‑generate recipes.
-  - Create and deploy tilesets, monitor status, and publish—all with structured, color‑coded logs.
-- **Type toggling**: Switch all values in a selected column between numeric and string types with one click.
-- **Visual feedback**:
-  - Convertible columns highlight in translucent blue.
-  - Non‑convertible columns flash translucent red and revert.
-  - Cell editors clear old text to avoid artifacts.
-- **Enhanced logging panel**: Structured tree view with Job ID, Stage, Message, and timestamp; filters duplicate statuses and color‑codes by level.
-- **Customizable UI**:
-  - Modern QSS‑based styling with consistent button and field designs.
-  - Drop‑shadow effects on controls and dynamic JSON syntax colors.
-- **Smart save dialog**: Suggested filename defaults to `routeName_string.geojson` or `routeName_number.geojson`.
-- **Packaging**: Support for PyInstaller bundling into standalone apps on macOS and Windows.
+- **Modern UI**: Clean, responsive interface built with PySide6
+- **GeoJSON Support**: Load, view, and edit GeoJSON files
+- **Mapbox Tilesets Integration**:
+  - Configure and manage Mapbox Tilesets
+  - Upload sources and create tilesets
+  - Monitor job status and publish tilesets
+- **Type Conversion**: Toggle between different data types for GeoJSON properties
+- **Custom Styling**: Modern QSS-based theming
+- **Cross-Platform**: Works on Windows, macOS, and Linux
 
 ---
 
 ## 🚀 Installation & Running
 
+### Prerequisites
+- Python 3.9 or higher
+- pip (Python package manager)
+
+### Using pip (recommended)
+
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/<your-username>/geojson-type-editor.git
+   git clone https://github.com/laflovver/geojson-type-editor.git
    cd geojson-type-editor
    ```
 
 2. **Create and activate a virtual environment**
    ```bash
-   python3 -m venv venv        # or: python -m venv venv
-   source venv/bin/activate    # macOS/Linux
-   # venv\Scripts\activate   # Windows
+   python -m venv venv
+   # On Windows:
+   .\venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
    ```
 
-3. **Install dependencies**
+3. **Install the package in development mode**
    ```bash
-   pip install PyQt5
+   pip install -e .
    ```
 
-4. **Run the app**
+4. **Run the application**
    ```bash
-   python geojson_type_editor.py
+   python -m geojson_editor
+   ```
+
+### Development Setup
+
+1. **Install development dependencies**
+   ```bash
+   pip install -e ".[dev]"
+   ```
+
+2. **Run tests**
+   ```bash
+   pytest
+   ```
+
+3. **Format code**
+   ```bash
+   black .
+   isort .
    ```
 
 ---
 
-## 📦 Packaging as a Double‑Click App
+## 📦 Packaging
 
-### Using PyInstaller
+### Building a standalone executable
 
-```bash
-pip install pyinstaller
-pyinstaller \
-  --windowed \
-  --name GeoJSONBlossom \
-  geojson_type_editor.py
-```
+1. **Install PyInstaller**
+   ```bash
+   pip install pyinstaller
+   ```
 
-- **macOS**: find `GeoJSONBlossom.app` in `dist/`.
-- **Windows**: find `GeoJSONBlossom.exe` in `dist/GeoJSONBlossom/`.
-- Copy the `.app` or `.exe` to your Desktop to launch by double‑click.
+2. **Build the application**
+   ```bash
+   pyinstaller run.py --name GeoJSONEditor --windowed --onefile
+   ```
 
-### (Optional) Create a DMG on macOS
-
-```bash
-hdiutil create -volname "GeoJSONBlossom" \
-               -srcfolder dist/GeoJSONBlossom.app \
-               -ov -format UDZO GeoJSONBlossom.dmg
-```
+3. **Find the executable**
+   - On Windows: `dist/GeoJSONEditor.exe`
+   - On macOS: `dist/GeoJSONEditor.app`
+   - On Linux: `dist/GeoJSONEditor`
 
 ---
 
 ## 📁 Project Structure
 
-```text
-geojson-type-editor/
-├── geojson_type_editor.py   # Main application script
-├── README.md                # Project documentation
-├── LICENSE                  # MIT license
-├── .gitignore               # Ignored files and directories
-└── dist/                    # Bundled apps/executables (after PyInstaller)
 ```
+geojson-type-editor/
+├── src/
+│   └── geojson_editor/      # Main package
+│       ├── core/             # Core functionality
+│       ├── ui/               # User interface components
+│       ├── widgets/          # Custom widgets
+│       ├── resources/        # Application resources
+│       │   ├── fonts/        # Font files
+│       │   ├── icons/        # Application icons
+│       │   └── styles/       # QSS stylesheets
+│       └── __init__.py       # Package initialization
+├── tests/                    # Test files
+├── run.py                    # Application entry point
+├── pyproject.toml            # Project configuration
+├── README.md                 # This file
+└── LICENSE                   # MIT License
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 

@@ -1,0 +1,7 @@
+PyQt5==5.15.9
+PyQt5-sip==12.13.0
+PyQtWebEngine==5.15.9
+PyYAML==6.0.1
+requests==2.31.0
+jsonschema==4.19.0
+python-dotenv==1.0.0

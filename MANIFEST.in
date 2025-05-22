@@ -1,0 +1,19 @@
+include README.md
+include LICENSE
+include CONTRIBUTING.md
+include CODE_OF_CONDUCT.md
+include pyproject.toml
+include setup.cfg
+
+recursive-include src/geojson_editor/resources *
+recursive-include tests *
+
+# Include documentation
+prune docs/_build
+prune docs/api
+
+# Include examples
+prune examples
+
+# Include test data
+prune test_data

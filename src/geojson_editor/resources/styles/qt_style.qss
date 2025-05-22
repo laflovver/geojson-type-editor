@@ -1,14 +1,34 @@
 /* qt_style.qss */
-QWidget {
+* {
     font-family: 'Roboto Mono';
     background-color: #FFFFFF;
     color: #4F5D75;
+    font-size: 10pt;
 }
+/* Base styles */
+QMainWindow {
+    background-color: #f5f5f5;
+}
+
+/* Group boxes */
+QGroupBox {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-top: 1ex;
+    background-color: white;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px 0 5px;
+    color: #333;
+}
+
 /* Buttons container */
-/* Apply to container widget holding grouped buttons, if using QGroupBox */
 QGroupBox#buttonGroup {
     border-radius: 5px;
-    background: #4F5D75; /* var(--Slate-100) */
+    background: #4F5D75; 
     margin: 8px;
     padding: 4px;
 }
@@ -16,11 +36,14 @@ QGroupBox#buttonGroup {
 /* Individual buttons */
 QPushButton {
     min-width: 285px;
-    height: 34px;
-    padding: 3px 14px;
+    min-height: 34px;
+    padding: 5px 14px;
     border-radius: 5px;
-    background: #919AA8; /* var(--Slate-60) */
+    background: #919AA8; 
     color: #FFFFFF;
+    border: none;
+    margin: 2px;
+    font-weight: bold;
 }
 
 QPushButton:hover:enabled {
@@ -28,7 +51,7 @@ QPushButton:hover:enabled {
 }
 
 QPushButton:pressed, QPushButton:checked {
-    background: #4F5D75; /* var(--Slate-100) */
+    background: #4F5D75; 
 }
 
 QPushButton:disabled {
@@ -37,30 +60,54 @@ QPushButton:disabled {
 }
 
 /* Text input fields */
-QLineEdit, QTextEdit, QPlainTextEdit {
-    height: 24px;
-    padding: 3px 14px;
+QLineEdit {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: white;
+}
+
+QLineEdit:focus {
+    border: 1px solid #2196F3;
+}
+
+QTextEdit, QPlainTextEdit {
+    min-height: 24px;
+    padding: 5px;
     border-radius: 5px;
-    background: rgba(145, 154, 168, 0.1);
+    border: 1px solid #e0e0e0;
+    background: white;
     color: #000000;
+    selection-background-color: #2196F3;
+    selection-color: white;
 }
 
 QLineEdit, QTextEdit, QPlainTextEdit, QTableWidget {
     border-radius: 5px;
+    background-color: white;
 }
+
 /* Table */
 QTableWidget {
-    gridline-color: #DDDDDD;
-    background-color: #FFFFFF;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: white;
 }
+
+QTableWidget:hover {
+}
+
 QHeaderView::section {
-    background-color: #F9F9F9;
-    padding: 4px 8px;
-    font-size: 14px;
+    background-color: #f5f5f5;
+    padding: 6px;
+    border: 1px solid #e0e0e0;
+    color: #333;
 }
+
 QTableCornerButton::section {
-    background-color: #F9F9F9;
+    background-color: #f5f5f5;
 }
+
 /* Item hover (10% opacity) */
 QTableWidget::item:hover {
     background-color: rgba(79, 93, 117, 0.10);
